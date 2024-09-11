@@ -42,6 +42,7 @@ function getLayer({
   radius = 1,
   sat = 0.5,
   size = 1,
+  light = 1,
   z = 0,
 }) {
   const layerGroup = new THREE.Group();
@@ -55,7 +56,7 @@ function getLayer({
     // const length = new THREE.Vector3(pos.x, pos.y, 0).length();
     // const hue = 0.0; // (0.9 - (radius - length) / radius) * 1;
 
-    let color = new THREE.Color().setHSL(hue, 1, sat);
+    let color = new THREE.Color().setHSL(hue, sat, light, "srgb");
     const sprite = getSprite({ hasFog, color, opacity, path, pos, size });
     layerGroup.add(sprite);
   }
