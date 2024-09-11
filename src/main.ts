@@ -1,10 +1,15 @@
 import "./style.css";
 import * as THREE from "three";
 import getLayer from "./getLayer";
+import Stats from "three/addons/libs/stats.module.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { createElement } from "./utils";
 
 const canvas = createElement("canvas");
+const container = createElement("div", { id: "container" });
+const stats = new Stats();
+stats.showPanel(1);
+container.appendChild(stats.dom);
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -41,6 +46,7 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   ctrls.update();
+  stats.update();
 }
 
 animate();
